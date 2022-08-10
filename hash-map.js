@@ -83,3 +83,88 @@ console.log(myMap2.get(keyFunc));
 console.log(myMap2.get('a string'));
 console.log(myMap.get({}));
 console.log(myMap.get(function() {} ));
+
+// Using NaN as Map keys
+
+console.log ('USING NaN AS MAP KEYS');
+
+const myMap3 = new Map();
+
+myMap3.set(NaN, 'not a number');
+
+console.log(myMap3.get(NaN));
+
+const otherNaN = Number('foo');
+console.log (myMap3.get(otherNaN));
+
+
+// Iterating Map with for.. of
+
+const myMap4 = new Map();
+
+myMap4.set(0, 'zero');
+myMap4.set(1, 'one');
+
+for (const [key, value] of myMap4) {
+  console.log(`${key} = ${value}`);
+}
+
+for (const key of myMap4.keys()) {
+  console.log('key:', key);
+}
+
+for (const value of myMap4.values()) {
+  console.log('value:', value);
+}
+
+for (const [key, value] of myMap4.entries()) {
+  console.log (`${key} = ${value}`);
+}
+
+myMap4.forEach((value, key) => {
+  console.log (`${key} = ${value}`);
+});
+
+
+// Relation with Array Objects
+
+const kvArray = [['key1', 'value1'], ['key', 'value2']];
+const myMap5 = new Map(kvArray);
+
+console.log (myMap5.get('key1'));
+console.log (Array.from(myMap5));
+console.log ([...myMap5]);
+console.log(Array.from(myMap5.keys()));
+
+//Cloning and merging Maps
+
+console.log ('MERGING MAPS');
+
+const original = new Map([[1, 'one'],]);
+const clone = new Map (original);
+
+console.log(clone.get(1));
+console.log(original === clone);
+
+const first = new Map([
+  [1, 'one'],
+  [2, 'two'],
+  [3, 'three'],
+]);
+
+const second = new Map([
+  [1,'uno'],
+  [2, 'dos'],
+]);
+
+const merged = new Map([...first, ...second]);
+
+console.log (merged.get(1));
+console.log (merged.get(2));
+console.log (merged.get(3));
+
+const newMerged = new Map([...first, ...second, [1, 'eins']]);
+
+console.log(newMerged.get(1));
+console.log(newMerged.get(2));
+console.log(newMerged.get(3));

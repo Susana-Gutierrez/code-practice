@@ -12,14 +12,7 @@ function commonCharacterCount(s1, s2) {
     newArray = s1.split('');
   }
 
-  console.log ('newArray: ', newArray);
-
   for (let i = 0; i < stringCounter.length; i++ ) {
-
-    console.log(newArray);
-
-    console.log(newArray.includes(stringCounter[i]));
-
     if (newArray.includes(stringCounter[i])) {
       count += 1;
       for (let j = 0; j < newArray.length; j++) {
@@ -29,7 +22,6 @@ function commonCharacterCount(s1, s2) {
         }
       }
     }
-
   }
 
   return count;
